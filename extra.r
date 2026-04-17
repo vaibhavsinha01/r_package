@@ -162,3 +162,28 @@ abline(h=1,col="red")
 res = dbscan(df,0.3,4)
 res$cluster
 plot(df[,1],df[,2],col=res$cluster,pch=20)
+
+# extra code for cart 
+library(infotheo)
+library(rpart)
+library(rpart.plot)
+library(RWeka)
+
+data <- data.frame(
+  Contract = c("Month","Month","Year","Year","Month","Year"),
+  InternetService = c("DSL","Fiber","DSL","Fiber","DSL","Fiber"),
+  PaymentMethod = c("Card","Cash","Card","Cash","Cash","Card"),
+  Churn = c("Yes","Yes","No","No","Yes","No")
+)
+data
+data[] <- lapply(data, as.factor)
+data
+entropy(data$Churn)
+entropy(data$Contract)
+
+mutinformation(data$Contract,data$Churn)
+
+# incase of cart the entropy , mutinformation won't be needed much
+model <- J48(Churn ~ .,data=data)
+plot(model)
+print(model)
