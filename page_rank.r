@@ -3,6 +3,10 @@ library(igraph)
 
 edges <- c("A","B", "A","C","B","C", "B","D","C","A","D","C")
 
+# use the code below in place of g <- graph(edges,directed=TRUE) in case of a deprecated version
+# edge_matrix <- matrix(edges,ncol=2,byrow=TRUE)
+# g <- graph_from_edgelist(edge_matrix,directed=TRUE)
+
 g <- graph(edges, directed=TRUE)
 pr <- page_rank(g, damping = 0.85)
 
