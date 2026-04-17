@@ -1,5 +1,3 @@
-# Clear
-rm(list=ls())
 
 # Data
 data <- data.frame(
